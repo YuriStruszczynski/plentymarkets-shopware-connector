@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [2.0.0-rc2]
 ### Added
 - Order status and shipping number import functionality
 - display mapping console command
@@ -24,8 +24,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - categories with no active shop assignment will be deactivated
 - order item vatRate is now synced correctly
 
+##ä Removed
+- Packaging Unit synchronization
+
 ### Fixed
 - product translations
+- variations with more then 50 different colors
 
 ## [2.0.0-rc1]
 ### Added

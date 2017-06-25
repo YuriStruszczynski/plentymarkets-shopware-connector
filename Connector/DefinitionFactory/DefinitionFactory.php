@@ -4,7 +4,6 @@ namespace PlentyConnector\Connector\DefinitionFactory;
 
 use PlentyConnector\Connector\ValidatorService\ValidatorServiceInterface;
 use PlentyConnector\Connector\ValueObject\Definition\Definition;
-use PlentyConnector\Connector\ValueObject\ValueObjectInterface;
 
 /**
  * Class DefinitionFactory
@@ -31,17 +30,23 @@ class DefinitionFactory
      * @param string   $destinationAdapterName
      * @param string   $objectType
      * @param null|int $priority
+     * @param bool     $active
      *
-     * @return ValueObjectInterface
+     * @return Definition
      */
-    public function factory($originAdapterName, $destinationAdapterName, $objectType, $priority = null)
-    {
-        $definition = Definition::fromArray([
-            'originAdapterName' => $originAdapterName,
-            'destinationAdapterName' => $destinationAdapterName,
-            'objectType' => $objectType,
-            'priority' => $priority,
-        ]);
+    public function factory(
+        $originAdapterName,
+        $destinationAdapterName,
+        $objectType,
+        $priority = null,
+        $active = true
+    ) {
+        $definition = new Definition();
+        $definition->setOriginAdapterName($originAdapterName);
+        $definition->setDestinationAdapterName($destinationAdapterName);
+        $definition->setObjectType($objectType);
+        $definition->setPriority($priority);
+        $definition->setActive($active);
 
         $this->validator->validate($definition);
 
